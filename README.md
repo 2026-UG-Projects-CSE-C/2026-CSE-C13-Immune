@@ -59,6 +59,33 @@ flowchart TB
 
 Every implemented component is mapped to source in [architecture and system design](docs/architecture.md). Planned S8 work is documented separately in the [implementation status and roadmap](docs/implementation-status.md).
 
+## Repository Structure
+
+```text
+README.md
+pyproject.toml
+requirements-lock.txt
+docs/
+|-- architecture.md
+|-- implementation-status.md
+`-- reproducibility.md
+src/immune/
+|-- demo.py
+|-- agents/          # Reference agent and SQLite order environment
+|-- core/            # Execution context and event types
+|-- faults/          # Deterministic response fault injection
+|-- models/          # Order-management domain models
+|-- recovery/        # Bounded REFRESH recovery
+|-- telemetry/       # Event storage and hashing
+`-- verification/    # Independent persisted-state verification
+tests/
+|-- integration/
+|-- scenarios/
+`-- unit/
+```
+
+See the [architecture and system design](docs/architecture.md) and [implementation status and roadmap](docs/implementation-status.md) documents for component responsibilities and the Phase I/S8 boundary.
+
 ## Technology Stack
 
 Python 3.12, SQLite through Python's `sqlite3`, SQLAlchemy Core 2.0.48, and pytest 9.0.2. Runtime code uses the Python standard library and SQLAlchemy; pytest is a test dependency. There is no web framework, LLM SDK, forecasting model or external database server in this edition.
@@ -103,6 +130,18 @@ Each command creates a fresh temporary SQLite database, reads real persisted loc
 ```
 
 The complete included suite covers healthy and faulty execution, verification, bounded recovery, refusal conditions, failed recovery tools, event integrity, hashing and read-only database behavior. The [reproducibility report](docs/reproducibility.md) records the exact environment, commands, exit codes, test totals and representative outputs. Passing tests establish only the behavior exercised by those tests.
+
+## Static Analysis and Formatting
+
+Ruff 0.17.2 was used for lint rules `E4`, `E7`, `E9`, `F` and `I`, together with a formatting check, consistent with the [reproducibility report](docs/reproducibility.md). From the repository root, after completing the installation above, run:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --disable-pip-version-check "ruff==0.17.2"
+.\.venv\Scripts\python.exe -m ruff check --select E4,E7,E9,F,I src tests
+.\.venv\Scripts\python.exe -m ruff format --check src tests
+```
+
+Both checks are non-mutating. Ruff is an optional development validation tool and is not a runtime dependency.
 
 ## Limitations
 
