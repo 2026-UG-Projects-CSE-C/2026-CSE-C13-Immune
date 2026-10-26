@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools==82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "immune-academic"
+version = "0.1.0"
+description = "IMMUNE Phase I: independent order-state verification and bounded REFRESH recovery"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["SQLAlchemy==2.0.48"]
+
+[project.optional-dependencies]
+test = ["pytest==9.0.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-config --strict-markers"
