@@ -131,6 +131,18 @@ Each command creates a fresh temporary SQLite database, reads real persisted loc
 
 The complete included suite covers healthy and faulty execution, verification, bounded recovery, refusal conditions, failed recovery tools, event integrity, hashing and read-only database behavior. The [reproducibility report](docs/reproducibility.md) records the exact environment, commands, exit codes, test totals and representative outputs. Passing tests establish only the behavior exercised by those tests.
 
+## Presentation Traceability and Academic Evidence
+
+The October 2026 [Project Phase I final-review presentation](docs/presentation-evidence-map.md) is supported by an explicit slide-to-source and slide-to-test evidence map. The source contains the **deterministic Phase I implementation only**; literature precedents and proposed Phase II integrations are distinguished from executable functionality.
+
+- [Presentation-to-implementation traceability](docs/presentation-evidence-map.md): key claims, their source and test evidence, and implementation boundaries.
+- [Scholarly foundations](docs/scholarly-foundations.md): ten cited research publications, publication status, technical relevance, and non-adoption caveats.
+- [SDG alignment and evidence limitations](docs/sdg-alignment.md): qualitative mapping to SDGs 9, 8, and 4 without unsupported impact claims.
+- [Continuous validation workflow](.github/workflows/phase-i-validation.yml): Windows Python 3.12 tests, static checks and demonstration outcomes, subject to GitHub Actions being enabled by the repository owner.
+- [Software citation metadata](CITATION.cff): machine-readable citation for the institutional academic edition, not a research-publication DOI.
+
+The final presentation's supporting-source entry [S1] identifies commit `79d6ade89d1908d9af6bc87b4e785578061b110a`, the **frozen original Phase I implementation snapshot**. These subsequent documentation and validation additions do not change its executable source. If the institution requires the presentation to cite the latest documentation commit, update the supporting-source reference explicitly rather than silently rewriting historical evidence.
+
 ## Static Analysis and Formatting
 
 Ruff 0.17.2 was used for lint rules `E4`, `E7`, `E9`, `F` and `I`, together with a formatting check, consistent with the [reproducibility report](docs/reproducibility.md). From the repository root, after completing the installation above, run:
