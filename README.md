@@ -4,7 +4,7 @@ Phase I academic edition: evidence-grounded state verification and bounded REFRE
 
 ## Academic Context
 
-B.Tech Computer Science and Engineering, Department of Computer Science and Engineering, Vidya Academy of Science & Technology, APJ Abdul Kalam Technological University (KTU), 2019 Scheme. This repository presents the CSD415 S7 Project Phase I implementation, with continued development planned for S8.
+B.Tech Computer Science and Engineering, Department of Computer Science and Engineering, Vidya Academy of Science & Technology, APJ Abdul Kalam Technological University (KTU), 2019 Scheme. This repository presents the CSD415 Project Phase I implementation, with further development proposed for Phase II.
 
 The title preserves continuity with the original project proposal. The implemented Phase I scope is narrower: it focuses on independent state verification and bounded recovery. Operational early failure forecasting remains planned work and is not represented as an implemented capability. See the [implementation status](docs/implementation-status.md).
 
@@ -34,13 +34,15 @@ REFRESH is explicitly requested through `--recover`. It requires FAIL, re-reads 
 
 ## Technical Foundations
 
-IMMUNE applies established reliability principles within a small academic workflow:
+IMMUNE draws on established systems and agent-evaluation research while limiting its implementation claims to the submitted Phase I source:
 
-- RIFL demonstrates how durable request identities and completion records can support linearizable retry behavior in distributed systems [1]. IMMUNE does not implement RIFL; the work explains why a client cannot infer an operation's effect from a missing response alone.
-- Sagas formalize recovery for long-lived transactions as sequences of transactions with compensating actions [2]. IMMUNE implements only a task-specific REFRESH continuation and does not claim general transaction compensation.
-- Runtime assurance research separates online monitoring, corrective planning and verification in autonomous systems [3]. IMMUNE adopts the separation between execution and independent verification but does not implement the paper's neural forecasting or safety guarantees.
+- **Idempotency and external effects [1].** RIFL motivates explicit request identity and completion evidence when retries could duplicate effects. IMMUNE does not implement RIFL or provider-enforced exactly-once RPCs.
+- **Runtime assurance [2].** Independent monitoring and assurance motivate a distinction between agent control flow and task-state correctness. IMMUNE does not implement the cited neural-network verification methods or safety guarantees.
+- **Transactional recovery [6].** Sagas provide a foundational model of compensating long-lived transactions. IMMUNE's bounded REFRESH is a task-specific corrective continuation, not a general Saga protocol.
+- **End-to-end correctness [7].** The end-to-end argument motivates evaluating the final task outcome at the appropriate boundary, without implying a formal correctness proof.
+- **State-based agent evaluation [9].** τ-bench motivates independent comparison of persisted state with task goals. IMMUNE does not execute the benchmark or claim its results.
 
-These foundations are prior work. The academic contribution of this repository is their source-grounded application to a reproducible order-management demonstration, not a new reliability algorithm.
+The contribution documented here is a reproducible engineering demonstration that combines selected ideas within one fixed order-management task. For the complete, consistently numbered ten-paper literature review, publication statuses, and non-adoption limitations, see [Scholarly Foundations and Scope of Adoption](docs/scholarly-foundations.md).
 
 ## System Architecture
 
@@ -57,7 +59,7 @@ flowchart TB
     REC --> ENV
 ```
 
-Every implemented component is mapped to source in [architecture and system design](docs/architecture.md). Planned S8 work is documented separately in the [implementation status and roadmap](docs/implementation-status.md).
+Every implemented component is mapped to source in [architecture and system design](docs/architecture.md). Planned Phase II work is documented separately in the [implementation status and roadmap](docs/implementation-status.md).
 
 ## Repository Structure
 
@@ -84,7 +86,7 @@ tests/
 `-- unit/
 ```
 
-See the [architecture and system design](docs/architecture.md) and [implementation status and roadmap](docs/implementation-status.md) documents for component responsibilities and the Phase I/S8 boundary.
+See the [architecture and system design](docs/architecture.md) and [implementation status and roadmap](docs/implementation-status.md) documents for component responsibilities and the Phase I/Phase II boundary.
 
 ## Technology Stack
 
@@ -166,11 +168,17 @@ Both checks are non-mutating. Ruff is an optional development validation tool an
 
 ## Future Work
 
-S8 work will prioritize configured workflows, task-bound verification, persistent recovery budgets and session evidence, additional controlled faults, and invocation-correct integration. Any future LLM integration or forecasting capability will require its own implementation and evaluation before being described as delivered. See the [Phase II roadmap](docs/implementation-status.md).
+Phase II work will prioritize configured workflows, task-bound verification, persistent recovery budgets and session evidence, additional controlled faults, and invocation-correct integration. Any future LLM integration or forecasting capability will require its own implementation and evaluation before being described as delivered. See the [Phase II roadmap](docs/implementation-status.md).
 
-## SDG 9 Alignment
+## Alignment with Sustainable Development Goals
 
-As a qualitative academic interpretation, repeatable fault testing and auditable recovery can support engineering practices for dependable digital infrastructure and technological capability. This relates to the infrastructure and innovation themes of [United Nations SDG 9](https://sdgs.un.org/goals/goal9). No SDG indicator, infrastructure deployment or societal impact has been measured.
+The following alignments are qualitative interpretations of the implemented Phase I prototype, not evidence of progress against official United Nations indicators:
+
+- **[SDG 9 — Industry, Innovation and Infrastructure](https://sdgs.un.org/goals/goal9) [U1] — Primary thematic alignment (Targets 9.5 and 9.b).** Controlled fault injection, independent persisted-state verification, and bounded correction constitute a reproducible technical study of dependable digital engineering. No industrial deployment, infrastructure reliability measurement, or innovation-policy effect is claimed.
+- **[SDG 8 — Decent Work and Economic Growth](https://sdgs.un.org/goals/goal8) [U3] — Prospective application (Target 8.2).** A verification-and-recovery approach might inform more dependable business-process automation. The synthetic order workflow does not establish increased productivity, employment, or economic impact.
+- **[SDG 4 — Quality Education](https://sdgs.un.org/goals/goal4) [U2] — Secondary educational relevance (Target 4.4).** The available code, architecture, demonstration procedures, and tests may support the study of software dependability. No formal educational intervention or measured learning benefit is claimed.
+
+For target-specific evidence and explicit limitations, consult [Sustainable Development Goal Alignment: Scope and Evidence](docs/sdg-alignment.md). The project makes no claim of UN endorsement or certified SDG impact.
 
 ## Project Team and Supervision
 
@@ -178,12 +186,27 @@ Team members: Adhil Naseem, Nithin C, Sath Sree Hari K. Project guide: Neethu Ge
 
 ## References
 
-- [1] C. Lee, S. J. Park, A. Kejriwal, S. Matsushita, and J. K. Ousterhout, “Implementing Linearizability at Large Scale and Low Latency,” *Proceedings of the 25th ACM Symposium on Operating Systems Principles*, pp. 71–86, 2015. [doi:10.1145/2815400.2815416](https://doi.org/10.1145/2815400.2815416).
-- [2] H. Garcia-Molina and K. Salem, “Sagas,” *Proceedings of the 1987 ACM SIGMOD International Conference on Management of Data*, pp. 249–259, 1987. [doi:10.1145/38713.38742](https://doi.org/10.1145/38713.38742).
-- [3] E. Yel et al., “Assured Runtime Monitoring and Planning: Toward Verification of Neural Networks for Safe Autonomous Operations,” *IEEE Robotics & Automation Magazine*, vol. 27, no. 2, pp. 102–116, 2020. [doi:10.1109/MRA.2020.2981114](https://doi.org/10.1109/MRA.2020.2981114).
-- [Python 3.12 documentation](https://docs.python.org/3.12/).
-- [SQLite URI filenames and read-only mode](https://www.sqlite.org/uri.html).
-- [SQLAlchemy 2.0 connections and transactions](https://docs.sqlalchemy.org/en/20/core/connections.html).
-- [United Nations Sustainable Development Goal 9](https://sdgs.un.org/goals/goal9).
+### Scholarly Literature
+
+The numbering below is identical to the ten scholarly works cited in the Phase I final-review presentation. The 2026 arXiv entries **[3]–[5] are preprints**, not peer-reviewed publications. A comparison of their methods with the implemented prototype is provided in [Scholarly Foundations and Scope of Adoption](docs/scholarly-foundations.md).
+
+- **[1]** C. Lee, S. J. Park, A. Kejriwal, S. Matsushita, and J. K. Ousterhout, “Implementing Linearizability at Large Scale and Low Latency,” *Proceedings of the 25th ACM Symposium on Operating Systems Principles (SOSP)*, pp. 71–86, 2015. [DOI: 10.1145/2815400.2815416](https://doi.org/10.1145/2815400.2815416).
+- **[2]** E. Yel *et al.*, “Assured Runtime Monitoring and Planning: Toward Verification of Neural Networks for Safe Autonomous Operations,” *IEEE Robotics & Automation Magazine*, vol. 27, no. 2, pp. 102–116, 2020. [DOI: 10.1109/MRA.2020.2981114](https://doi.org/10.1109/MRA.2020.2981114).
+- **[3]** B. Mohammadi *et al.*, “Atomix: Timely, Transactional Tool Use for Reliable Agentic Workflows,” *arXiv preprint* arXiv:2602.14849, 2026. [arXiv](https://arxiv.org/abs/2602.14849).
+- **[4]** D. Sah *et al.*, “UndoBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents,” *arXiv preprint* arXiv:2610.05622, 2026. [arXiv](https://arxiv.org/abs/2610.05622).
+- **[5]** J. Li, “Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents,” *arXiv preprint* arXiv:2609.29095, 2026. [arXiv](https://arxiv.org/abs/2609.29095).
+- **[6]** H. Garcia-Molina and K. Salem, “Sagas,” *Proceedings of the 1987 ACM SIGMOD International Conference on Management of Data*, pp. 249–259, 1987. [DOI: 10.1145/38713.38742](https://doi.org/10.1145/38713.38742).
+- **[7]** J. H. Saltzer, D. P. Reed, and D. D. Clark, “End-to-End Arguments in System Design,” *ACM Transactions on Computer Systems*, vol. 2, no. 4, pp. 277–288, 1984. [DOI: 10.1145/357401.357402](https://doi.org/10.1145/357401.357402).
+- **[8]** S. Yao *et al.*, “ReAct: Synergizing Reasoning and Acting in Language Models,” *International Conference on Learning Representations (ICLR)*, 2023. [arXiv:2210.03629](https://arxiv.org/abs/2210.03629).
+- **[9]** S. Yao, N. Shinn, P. Razavi, and K. Narasimhan, “τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains,” *International Conference on Learning Representations (ICLR)*, 2025. [Proceedings](https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b126cc38b8638e07bef37e7b2bb72bf-Abstract-Conference.html).
+- **[10]** J. Lu *et al.*, “ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities,” *Findings of the Association for Computational Linguistics: NAACL 2025*, pp. 1160–1183, 2025. [DOI: 10.18653/v1/2025.findings-naacl.65](https://doi.org/10.18653/v1/2025.findings-naacl.65).
+
+### Supporting Sources and Technical Documentation
+
+- **[S1]** IMMUNE Project Team, *IMMUNE — Phase I Academic Edition*, [institutional implementation repository](https://github.com/VAST-CSE/2023-27-MAIN-C13-ADHIL-NASEEM), 2026. The presentation cites the [frozen implementation snapshot](https://github.com/VAST-CSE/2023-27-MAIN-C13-ADHIL-NASEEM/commit/79d6ade89d1908d9af6bc87b4e785578061b110a); later documentation updates do not change that implementation.
+- **[U1]** United Nations, “[Goal 9: Industry, Innovation and Infrastructure](https://sdgs.un.org/goals/goal9).”
+- **[U2]** United Nations, “[Goal 4: Quality Education](https://sdgs.un.org/goals/goal4).”
+- **[U3]** United Nations, “[Goal 8: Decent Work and Economic Growth](https://sdgs.un.org/goals/goal8).”
+- [Python 3.12 documentation](https://docs.python.org/3.12/); [SQLite read-only URI mode](https://www.sqlite.org/uri.html); [SQLAlchemy 2.0 transaction interfaces](https://docs.sqlalchemy.org/en/20/core/connections.html).
 
 No project license is included. Public availability alone does not grant permission to copy, modify or redistribute the project source.

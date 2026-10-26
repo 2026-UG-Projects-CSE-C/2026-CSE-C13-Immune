@@ -27,9 +27,9 @@ The assignment retains the original proposal title, *IMMUNE: Early Failure Forec
 | 15 | Developer/evaluator CLI interactions | `src/immune/demo.py`; `tests/scenarios/test_demo.py` | Command line only, not a browser interface |
 | 16 | PASS / FAIL / INDETERMINATE and REFRESH decision flow | `src/immune/verification/order_task.py`; `src/immune/recovery/order_task.py`; `tests/scenarios/test_recovery_boundaries.py` | Explicit recovery after supplied FAIL; not proof of authoritative request authentication |
 | 17 | Six module interface descriptions | `docs/architecture.md`; code under `src/immune/` | Architectural interfaces are task-specific |
-| 18 | Requirements and implementation status | `docs/implementation-status.md`; `tests/` | Completed work distinguished from S8 intentions |
+| 18 | Requirements and implementation status | `docs/implementation-status.md`; `tests/` | Completed Phase I work distinguished from proposed Phase II activities |
 | 19 | Three scenarios and 60 tests | `src/immune/demo.py`; `tests/scenarios/test_demo.py`; `docs/reproducibility.md` | Synthetic task; documented deterministic outputs |
-| 20 | Technology stack, S8 roadmap and repository source | `pyproject.toml`; `requirements-lock.txt`; `docs/implementation-status.md`; `docs/reproducibility.md` | Python 3.12; SQLite; SQLAlchemy 2.0.48; pytest 9.0.2; Ruff 0.17.2 |
+| 20 | Technology stack, Phase II roadmap and repository source | `pyproject.toml`; `requirements-lock.txt`; `docs/implementation-status.md`; `docs/reproducibility.md` | Python 3.12; SQLite; SQLAlchemy 2.0.48; pytest 9.0.2; Ruff 0.17.2 |
 | 21 | Conclusion | `README.md` — Implemented Functionality; Limitations | Proof of concept only; no measured production outcome |
 | 22 | SDGs 9, 8 and 4 | [SDG alignment](sdg-alignment.md) | Qualitative primary, prospective and educational alignments |
 | 23–25 | Ten scholarly references | [Scholarly foundations](scholarly-foundations.md) | Seven peer-reviewed publications and three arXiv preprints |

@@ -63,7 +63,7 @@ The selected source and tests passed Ruff 0.17.2 lint rules `E4`, `E7`, `E9`, `F
 
 ## Architecture-to-Source Consistency
 
-Every implemented node in the architecture diagram maps to one of `demo.py`, `reference_order_agent.py`, `order_lab.py`, `injector.py`, `order_task.py`, `lab_events.py` or `event_store.py`. The planned S8 diagram is labeled as future work and has no implied source implementation. The public architecture does not depict omitted firewall, certifier, MCP or browser components.
+Every implemented node in the architecture diagram maps to one of `demo.py`, `reference_order_agent.py`, `order_lab.py`, `injector.py`, `order_task.py`, `lab_events.py` or `event_store.py`. The proposed Phase II diagram is labeled as future work and has no implied source implementation. The public architecture does not depict omitted firewall, certifier, MCP or browser components.
 
 ## Reproduction Boundaries
 

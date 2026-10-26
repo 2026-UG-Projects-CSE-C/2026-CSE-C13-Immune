@@ -2,7 +2,9 @@ cff-version: 1.2.0
 message: "If you refer to this Phase I academic software, cite the institutional implementation and its project team."
 title: "IMMUNE: Early Failure Forecasting and Verified Recovery for Autonomous AI Agents — Phase I Academic Edition"
 authors:
-  - name: "IMMUNE Project Team"
+  - name: "Adhil Naseem"
+  - name: "Nithin C"
+  - name: "Sath Sree Hari K"
 version: 0.1.0
 date-released: "2026-10-26"
 url: "https://github.com/VAST-CSE/2023-27-MAIN-C13-ADHIL-NASEEM"

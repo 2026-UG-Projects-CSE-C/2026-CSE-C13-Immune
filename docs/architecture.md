@@ -102,7 +102,7 @@ flowchart LR
     BUDGET --> SESS["Planned: durable session evidence"]
 ```
 
-This diagram describes S8 intentions only. It is separate from the executable architecture. Real LLM integration and any forecasting capability remain conditional development goals.
+This diagram describes proposed Phase II work only. It is separate from the executable architecture. Real LLM integration and any forecasting capability remain conditional development goals.
 
 ## References
 

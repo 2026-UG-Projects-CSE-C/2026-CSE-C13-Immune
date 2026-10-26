@@ -2,7 +2,7 @@
 
 ## Academic Context and Architectural Refinement
 
-IMMUNE is a KTU 2019 Scheme B.Tech CSE project developed for CSD415 S7 Project Phase I, with continued work planned for S8. The project retains its original title, **IMMUNE: Early Failure Forecasting and Verified Recovery for Autonomous AI Agents**, while the available Phase I implementation establishes a narrower verification-and-recovery prototype.
+IMMUNE is a KTU 2019 Scheme B.Tech CSE project developed for CSD415 Project Phase I, with continued development proposed for Phase II. The project retains its original title, **IMMUNE: Early Failure Forecasting and Verified Recovery for Autonomous AI Agents**, while the available Phase I implementation establishes a narrower verification-and-recovery prototype.
 
 The original proposal includes monitoring, trajectory representation, emerging-risk analysis, fault localization, bounded recovery and independent verification. The public Phase I source implements the order task, observable execution events, independent persisted-state verification and explicitly requested REFRESH. It does not implement operational forecasting, automatic fault localization, real LLM orchestration or a general trajectory-analysis service.
 
@@ -29,7 +29,7 @@ The status labels describe only the functionality available in this repository.
 
 ## Future Work
 
-| S8 work item | Proposed acceptance evidence |
+| Phase II work item | Proposed acceptance evidence |
 |---|---|
 | Configured task interfaces | Two documented deterministic workflows with explicit task predicates |
 | Task-bound recovery requests | Reject mismatched tasks, stale verification and altered invocation arguments |
